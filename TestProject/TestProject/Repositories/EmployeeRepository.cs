@@ -1,10 +1,11 @@
 ﻿using Dapper;
 using System.Data;
 using TestProject.Models;
+using TestProject.Repositories.Interfaces;
 
 namespace TestProject.Repositories
 {
-    public class EmployeeRepository
+    public class EmployeeRepository : IEmployeeRepository
     {
         private readonly IDbConnection _dbConnection;
 
