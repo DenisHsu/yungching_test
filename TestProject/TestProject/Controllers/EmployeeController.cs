@@ -16,6 +16,10 @@ namespace TestProject.Controllers
             _employeeRepository = employeeRepository;
         }
 
+        /// <summary>
+        /// 取得所有員工資訊
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -23,6 +27,11 @@ namespace TestProject.Controllers
             return Ok(employees);
         }
 
+        /// <summary>
+        /// 取得單一員工資訊
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -31,6 +40,11 @@ namespace TestProject.Controllers
             return Ok(employee);
         }
 
+        /// <summary>
+        /// 新增員工資訊
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] EmployeeModel employee)
         {
@@ -38,6 +52,12 @@ namespace TestProject.Controllers
             return CreatedAtAction(nameof(GetById), new { id = employeeId }, employee);
         }
 
+        /// <summary>
+        /// 修改員工資訊
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="employee"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] EmployeeModel employee)
         {
@@ -46,6 +66,11 @@ namespace TestProject.Controllers
             return result > 0 ? NoContent() : NotFound();
         }
 
+        /// <summary>
+        /// 刪除員工資訊
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

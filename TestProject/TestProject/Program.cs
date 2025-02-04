@@ -1,4 +1,16 @@
+using Microsoft.Data.SqlClient;
+using System.Data;
+using TestProject.Repositories.Interfaces;
+using TestProject.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// µù¥U DB ³s½u
+builder.Services.AddScoped<IDbConnection>(sp =>
+    new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+
+// µù¥U Repository
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 // Add services to the container.
 

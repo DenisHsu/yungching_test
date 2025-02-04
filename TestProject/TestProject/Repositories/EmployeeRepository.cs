@@ -21,7 +21,7 @@ namespace TestProject.Repositories
         public async Task<IEnumerable<EmployeeModel>> GetAllAsync()
         {
 
-            var vSql = "SELECT LastName, FirstName, Title, Address, City, Country, HomePhone FROM Employees";
+            var vSql = "SELECT EmployeeID, LastName, FirstName, Title, Address, City, Country, HomePhone FROM Employees";
             var result = await _dbConnection.QueryAsync<EmployeeModel>(vSql);
 
             return result.ToList();
@@ -34,7 +34,7 @@ namespace TestProject.Repositories
         /// <returns></returns>
         public async Task<EmployeeModel> GetByIdAsync(int id)
         {
-            var vSql = "SELECT LastName, FirstName, Title, Address, City, Country, HomePhone FROM Employees WHERE EmployeeID = @Id";
+            var vSql = "SELECT EmployeeID, LastName, FirstName, Title, Address, City, Country, HomePhone FROM Employees WHERE EmployeeID = @Id";
             var result = await _dbConnection.QueryFirstOrDefaultAsync<EmployeeModel>(vSql, new { Id = id });
 
             return result;
